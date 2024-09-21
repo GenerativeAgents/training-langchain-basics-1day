@@ -1,1 +1,1 @@
-# workshop-langchain-basics-1day
+# training-langchain-basics-1day
