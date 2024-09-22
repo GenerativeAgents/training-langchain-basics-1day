@@ -47,20 +47,15 @@ def app() -> None:
 
     st.title("RAG")
 
-    # Chainを初期化
-    if "chain" not in st.session_state:
-        st.session_state.chain = create_rag_chain()
-    chain = st.session_state.chain
-
     # ユーザーの質問を受け付ける
     question = st.text_input("質問を入力してください")
     if not question:
         return
 
     # 回答を生成して表示
+    chain = create_rag_chain()
     stream = chain.stream(question)
-    with st.spinner():
-        st.write_stream(stream)
+    st.write_stream(stream)
 
 
 app()

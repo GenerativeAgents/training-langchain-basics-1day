@@ -1,14 +1,15 @@
-from typing import Iterator
+from typing import Any
 
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
 
 
-def stream_response(messages: list[BaseMessage]) -> Iterator[str]:
+def create_chain() -> Runnable[dict[str, Any], str]:
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", "You are a helpful assistant."),
@@ -17,9 +18,7 @@ def stream_response(messages: list[BaseMessage]) -> Iterator[str]:
     )
     model = ChatOpenAI(model="gpt-4o-mini")
 
-    chain = prompt | model | StrOutputParser()
-
-    return chain.stream({"messages": messages})
+    return prompt | model | StrOutputParser()
 
 
 def app() -> None:
@@ -50,7 +49,8 @@ def app() -> None:
     messages.append(HumanMessage(content=human_message))
 
     # 応答を生成して表示
-    stream = stream_response(messages=messages)
+    chain = create_chain()
+    stream = chain.stream({"messages": messages})
     with st.chat_message("ai"):
         with st.spinner():
             ai_message = st.write_stream(stream)
