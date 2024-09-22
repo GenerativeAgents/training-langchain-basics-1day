@@ -88,7 +88,7 @@ uv add \
   protobuf==3.20.3
 ```
 
-### Jupyter のインストール
+## Jupyter のインストール
 
 ハンズオンで Jupyter を使用するため、以下のコマンドでインストールしてください。
 
@@ -102,17 +102,52 @@ uv add --dev jupyter==1.1.1
 uv run jupyter notebook --ip 0.0.0.0 --port 8080 --no-browser
 ```
 
-TODO: Cloud9 の場合の開き方を追記
+Cloud9 の「Preview」>「Preview Running Application」をクリックしてください。
 
-TOOD: Jupyter 上で Python のバージョン確認・Hello World
+TODO: 画面キャプチャ
 
-## TODO: .env ファイルの記述
+※このプレビューではうまく表示されないのは想定通りです。
 
-## LangChain の clone
+右上の「Pop Out Into New Window」でブラウザの別のタブで開きます。
+
+TODO: 画面キャプチャ
+
+## Jupyter の動作確認
+
+Jupyter 上で以下のコマンドを実行して、想定通りの Python のバージョンが表示されるか確認してください。
+
+```
+!python --version
+```
+
+Jupyter 上で以下のコマンドを実行して、Python が動作するか確認してください。
+
+```python
+print("hello")
+```
+
+## .env ファイルの記述
+
+langchain-basics ディレクトリに .env という名前のファイルを作成してください。
+
+[.env.template](../.env.template) の内容をコピーして .env ファイルに貼り付けてください。
+
+OPENAI_API_KEY の値を記入してください。
+
+> [!NOTE]
+> LANGCHAIN_API_KEY はあとで記入するので、ひとまず空のままで大丈夫です。
+
+## langchain リポジトリの clone
+
+講座の一部で langchain リポジトリのデータを読み込んで使います。
+
+langchain-basics ディレクトリで以下のコマンドを実行して、langchain リポジトリを clone するディレクトリを作成してください。
 
 ```console
 mkdir -p tmp
 ```
+
+langchain-basics ディレクトリで以下のコマンドを実行して、langchain リポジトリを clone してください。
 
 ```console
 git clone --depth 1 https://github.com/langchain-ai/langchain.git ./tmp/langchain
