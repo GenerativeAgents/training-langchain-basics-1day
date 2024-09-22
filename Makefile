@@ -1,3 +1,7 @@
+.PHONY: notebook
+notebook:
+	uv run jupyter notebook --port 8080 --no-browser
+
 IPYNBS = $(shell ls chapter*/*.ipynb)
 
 .PHONY: test

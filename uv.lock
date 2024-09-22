@@ -1532,6 +1532,7 @@ dependencies = [
     { name = "langchain-openai" },
     { name = "langchain-text-splitters" },
     { name = "openai" },
+    { name = "python-dotenv" },
     { name = "streamlit" },
 ]
 
@@ -1548,6 +1549,7 @@ requires-dist = [
     { name = "langchain-openai", specifier = "==0.1.21" },
     { name = "langchain-text-splitters", specifier = "==0.2.2" },
     { name = "openai", specifier = "==1.40.6" },
+    { name = "python-dotenv", specifier = "==1.0.1" },
     { name = "streamlit", specifier = "==1.38.0" },
 ]
 
