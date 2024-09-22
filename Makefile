@@ -2,6 +2,10 @@
 notebook:
 	uv run jupyter notebook --port 8080 --no-browser
 
+.PHONY: streamlit
+streamlit:
+	uv run streamlit run --server.port 8080 chapter03/app.py
+
 IPYNBS = $(shell ls chapter*/*.ipynb)
 
 .PHONY: test
