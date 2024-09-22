@@ -41,6 +41,20 @@ uv python install 3.10.12
 uv run python --version
 ```
 
+## 作業ディレクトリ作成
+
+以下のコマンドで、作業用のディレクトリを作成してください。
+
+```console
+mkdir langchain-basics
+```
+
+以下のコマンドで、作業用のディレクトリに移動してください。
+
+```console
+cd langchain-basics
+```
+
 ## プロジェクト初期化
 
 uv を使う Python プロジェクトを初期化します。
@@ -55,6 +69,23 @@ uv init
 
 ```console
 uv run python hello.py
+```
+
+## 使用するパッケージのインストール
+
+講座内で使用するパッケージをインストールしてください。
+
+```console
+uv add \
+  python-dotenv==1.0.1 \
+  openai==1.40.6 \
+  langchain-core==0.2.30 \
+  langchain-openai==0.1.21 \
+　langchain-community==0.2.12 \
+　langchain-text-splitters==0.2.2 \
+　langchain-chroma==0.1.2 \
+　streamlit==1.38.0 \
+  protobuf==3.20.3
 ```
 
 ### Jupyter のインストール
@@ -75,21 +106,14 @@ TODO: Cloud9 の場合の開き方を追記
 
 TOOD: Jupyter 上で Python のバージョン確認・Hello World
 
-### その他のパッケージのインストール
+## TODO: .env ファイルの記述
 
-以下のコマンドでその他のパッケージをインストールできます。
+## LangChain の clone
 
-```
-uv add \
-  python-dotenv==1.0.1 \
-  openai==1.40.6 \
-  langchain-core==0.2.30 \
-  langchain-openai==0.1.21 \
-　langchain-community==0.2.12 \
-　langchain-text-splitters==0.2.2 \
-　langchain-chroma==0.1.2 \
-　streamlit==1.38.0 \
-  protobuf==3.20.3
+```console
+mkdir -p tmp
 ```
 
-### TODO: .env ファイルの記述
+```console
+git clone --depth 1 https://github.com/langchain-ai/langchain.git ./tmp/langchain
+```

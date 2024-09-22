@@ -1526,7 +1526,6 @@ name = "langchain-basics"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "gitpython" },
     { name = "langchain-chroma" },
     { name = "langchain-community" },
     { name = "langchain-core" },
@@ -1545,7 +1544,6 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "gitpython", specifier = "==3.1.43" },
     { name = "langchain-chroma", specifier = "==0.1.2" },
     { name = "langchain-community", specifier = "==0.2.12" },
     { name = "langchain-core", specifier = "==0.2.30" },

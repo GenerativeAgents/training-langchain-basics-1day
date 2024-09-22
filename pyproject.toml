@@ -5,7 +5,6 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "gitpython==3.1.43",
     "langchain-chroma==0.1.2",
     "langchain-community==0.2.12",
     "langchain-core==0.2.30",

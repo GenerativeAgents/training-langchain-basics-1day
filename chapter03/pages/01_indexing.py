@@ -1,8 +1,9 @@
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
-from langchain_community.document_loaders import GitLoader
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import CharacterTextSplitter
 
 
 def app() -> None:
@@ -14,27 +15,37 @@ def app() -> None:
     if not clicked:
         return
 
-    def file_filter(file_path: str) -> bool:
-        return file_path.endswith(".mdx")
+    # ロード
 
-    loader = GitLoader(
-        clone_url="https://github.com/langchain-ai/langchain",
-        repo_path="./tmp/langchain",
-        branch="master",
-        file_filter=file_filter,
+    loader = DirectoryLoader(
+        # ../tmp/langchain ではないので注意
+        path="tmp/langchain",
+        glob="**/*.mdx",
+        loader_cls=TextLoader,
     )
 
     with st.spinner("Loading documents..."):
-        documents = loader.load()
+        raw_docs = loader.load()
 
-    st.info(f"{len(documents)} documents loaded.")
+    st.info(f"{len(raw_docs)} documents loaded.")
 
-    embedding = OpenAIEmbeddings(model="text-embedding-3-small")
+    # チャンク化
+
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+
+    with st.spinner("Chunking documents..."):
+        docs = text_splitter.split_documents(raw_docs)
+
+    st.info(f"{len(docs)} documents chunked.")
+
+    # インデクシング
+
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
     with st.spinner("Indexing documents..."):
         Chroma.from_documents(
-            documents=documents,
-            embedding=embedding,
+            documents=docs,
+            embedding=embeddings,
             persist_directory="./tmp/chroma",
         )
 
