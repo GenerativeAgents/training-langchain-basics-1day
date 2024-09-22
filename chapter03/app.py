@@ -46,14 +46,16 @@ def app() -> None:
     with st.chat_message("human"):
         st.write(human_message)
 
+    # ユーザーの入力を会話履歴に追加
+    messages.append(HumanMessage(content=human_message))
+
     # 応答を生成して表示
     stream = stream_response(messages=messages)
     with st.chat_message("ai"):
         with st.spinner():
             ai_message = st.write_stream(stream)
 
-    # 会話履歴を追加
-    messages.append(HumanMessage(content=human_message))
+    # LLMの応答を会話履歴を追加
     messages.append(AIMessage(content=ai_message))
 
 
