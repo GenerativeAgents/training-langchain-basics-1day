@@ -20,7 +20,7 @@ def generate(messages: list[ChatCompletionMessageParam]) -> str:
         model="gpt-4o-mini",
         messages=messages,
     )
-    return response.choices[0].message.content
+    return response.choices[0].message.content  # type: ignore[return-value]
 
 
 def main() -> None:
