@@ -5,6 +5,7 @@
     "source.organizeImports": "explicit",
     "source.fixAll": "explicit"
   },
+  "notebook.formatOnSave.enabled": true,
   "python.defaultInterpreterPath": ".venv/bin/python",
   "python.terminal.activateEnvironment": false,
   "[python]": {

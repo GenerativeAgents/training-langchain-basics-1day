@@ -19,7 +19,8 @@
         "tamasfe.even-better-toml",
         "bierner.markdown-preview-github-styles",
         "bierner.markdown-mermaid",
-        "hediet.vscode-drawio"
+        "hediet.vscode-drawio",
+        "ms-toolsai.jupyter"
       ]
     }
   },

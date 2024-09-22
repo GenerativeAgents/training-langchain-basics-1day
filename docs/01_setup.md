@@ -1,5 +1,9 @@
 # 環境構築手順
 
+ハンズオン環境の構築手順です。
+
+AWS Cloud9 (Amazon Linux 2023) を想定しています。
+
 ## uv のインストール
 
 Python の特定バージョンのインストールやパッケージの管理のため、[uv](https://github.com/astral-sh/uv) をインストールします。
@@ -68,6 +72,8 @@ uv run jupyter notebook --ip 0.0.0.0 --port 8080 --no-browser
 ```
 
 TODO: Cloud9 の場合の開き方を追記
+
+TOOD: Jupyter 上で Python のバージョン確認・Hello World
 
 ### その他のパッケージのインストール
 
