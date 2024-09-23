@@ -8,7 +8,7 @@ from langgraph.graph.graph import CompiledGraph
 from langgraph.prebuilt import create_react_agent
 
 
-def create_agent_chain() -> CompiledGraph:
+def create_agent_chain(model_name: str) -> CompiledGraph:
     embedding = OpenAIEmbeddings(model="text-embedding-3-small")
     vector_store = Chroma(
         embedding_function=embedding,
@@ -22,7 +22,7 @@ def create_agent_chain() -> CompiledGraph:
     )
     tools = [retriever_tool]
 
-    model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    model = ChatOpenAI(model=model_name, temperature=0)
 
     return create_react_agent(model=model, tools=tools)
 
@@ -58,6 +58,9 @@ def app() -> None:
 
     st.title("RAG")
 
+    with st.sidebar:
+        model_name = st.selectbox(label="モデル", options=["gpt-4o-mini", "gpt-4o"])
+
     # 会話履歴を初期化
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -80,7 +83,7 @@ def app() -> None:
     messages.append(HumanMessage(content=human_message))
 
     # 応答を生成
-    agent = create_agent_chain()
+    agent = create_agent_chain(model_name=model_name)
     for s in agent.stream({"messages": messages}, stream_mode="values"):  # type: ignore[assignment]
         message = s["messages"][-1]
 
