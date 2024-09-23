@@ -16,39 +16,28 @@ def app() -> None:
         return
 
     # ロード
-
     loader = DirectoryLoader(
         # ../tmp/langchain ではないので注意
         path="tmp/langchain",
         glob="**/*.mdx",
         loader_cls=TextLoader,
     )
-
-    with st.spinner("Loading documents..."):
-        raw_docs = loader.load()
-
+    raw_docs = loader.load()
     st.info(f"{len(raw_docs)} documents loaded.")
 
     # チャンク化
-
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-
-    with st.spinner("Chunking documents..."):
-        docs = text_splitter.split_documents(raw_docs)
-
+    docs = text_splitter.split_documents(raw_docs)
     st.info(f"{len(docs)} documents chunked.")
 
     # インデクシング
-
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-
     with st.spinner("Indexing documents..."):
         Chroma.from_documents(
             documents=docs,
             embedding=embeddings,
             persist_directory="./tmp/chroma",
         )
-
     st.success("Indexing completed.")
 
 
