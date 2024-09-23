@@ -1531,6 +1531,7 @@ dependencies = [
     { name = "langchain-core" },
     { name = "langchain-openai" },
     { name = "langchain-text-splitters" },
+    { name = "langgraph" },
     { name = "openai" },
     { name = "protobuf" },
     { name = "python-dotenv" },
@@ -1549,6 +1550,7 @@ requires-dist = [
     { name = "langchain-core", specifier = "==0.2.30" },
     { name = "langchain-openai", specifier = "==0.1.21" },
     { name = "langchain-text-splitters", specifier = "==0.2.2" },
+    { name = "langgraph", specifier = "==0.2.16" },
     { name = "openai", specifier = "==1.40.6" },
     { name = "protobuf", specifier = "==3.20.3" },
     { name = "python-dotenv", specifier = "==1.0.1" },
@@ -1636,6 +1638,31 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e0/3d/b6cad97223a88465114da8623e9f3da7a74821e76afb3bf1f34f419d93d9/langchain_text_splitters-0.2.2.tar.gz", hash = "sha256:a1e45de10919fa6fb080ef0525deab56557e9552083600455cb9fa4238076140", size = 20188 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/06/76/9e0ca1b8881f64bf927f2205bf6c43a085c04646a71d911b3c05d76e90bb/langchain_text_splitters-0.2.2-py3-none-any.whl", hash = "sha256:1c80d4b11b55e2995f02d2a326c0323ee1eeff24507329bb22924e420c782dff", size = 25239 },
+]
+
+[[package]]
+name = "langgraph"
+version = "0.2.16"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langchain-core" },
+    { name = "langgraph-checkpoint" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/db/76/5c47ad738a464e5cab1be65548017bfa89dcab036b93490c1f4ce08d2767/langgraph-0.2.16.tar.gz", hash = "sha256:435e2bff165d526236294eac03b5e848653ed4d9ba2373e36432e3ca3e952ebe", size = 73441 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/be/91/c369facf574b24ebbc7aa5cdfa75afbe302cc0a11f72dfee8ec9382bc419/langgraph-0.2.16-py3-none-any.whl", hash = "sha256:5c8d5d119b98c1c071f37f4d41f98a8a06c1b5c36345b7be8e0f65c7fbfa0297", size = 91063 },
+]
+
+[[package]]
+name = "langgraph-checkpoint"
+version = "1.0.8"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langchain-core" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b9/98/06eb81be32d251e6b2465b94b6f79acc7654b9c7ac5e233ac639b959ca2b/langgraph_checkpoint-1.0.8.tar.gz", hash = "sha256:a528009d4ccebfd24da550fc8ccdd4de0a3c1077f30e2fcd32bddca4c9237e7f", size = 14465 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/48/9a/575eae07aae62c6995ce813cf49ef42e74508374452f1b7b43327372ec8a/langgraph_checkpoint-1.0.8-py3-none-any.whl", hash = "sha256:6eb2fa615e9a53d5a4181d0a189ecc76b87cd1d5613e17121d2779755d2e566c", size = 15855 },
 ]
 
 [[package]]

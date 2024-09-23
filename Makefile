@@ -4,7 +4,7 @@ notebook:
 
 .PHONY: streamlit
 streamlit:
-	uv run streamlit run chapter03/app.py --server.port 8080
+	uv run streamlit run chapter03_customize/app.py --server.port 8080
 
 IPYNBS = $(shell ls chapter*/*.ipynb)
 
