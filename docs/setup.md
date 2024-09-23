@@ -108,10 +108,10 @@ uv add \
   openai==1.40.6 \
   langchain-core==0.2.30 \
   langchain-openai==0.1.21 \
-　langchain-community==0.2.12 \
-　langchain-text-splitters==0.2.2 \
-　langchain-chroma==0.1.2 \
-　streamlit==1.38.0 \
+  langchain-community==0.2.12 \
+  langchain-text-splitters==0.2.2 \
+  langchain-chroma==0.1.2 \
+  streamlit==1.38.0 \
   protobuf==3.20.3
 ```
 
