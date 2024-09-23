@@ -92,12 +92,6 @@ OPENAI_API_KEY の値を記入してください。
 
 講座の一部で langchain リポジトリのデータを読み込んで使います。
 
-以下のコマンドを実行して、langchain リポジトリを clone するディレクトリを作成してください。
-
-```console
-mkdir -p tmp
-```
-
 以下のコマンドを実行して、langchain リポジトリを clone してください。
 
 ```console
