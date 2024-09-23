@@ -50,9 +50,9 @@ def app() -> None:
 
     # 応答を生成して表示
     chain = create_chain()
-    stream = chain.stream({"messages": messages})
+    ai_message = chain.invoke({"messages": messages})
     with st.chat_message("ai"):
-        ai_message = st.write_stream(stream)
+        st.write(ai_message)
 
     # LLMの応答を会話履歴を追加
     messages.append(AIMessage(content=ai_message))

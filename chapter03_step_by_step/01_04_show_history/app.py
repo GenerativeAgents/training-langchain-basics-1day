@@ -1,29 +1,8 @@
-from typing import Any
-
 import streamlit as st
-from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables import Runnable
-from langchain_openai import ChatOpenAI
-
-
-def create_chain() -> Runnable[dict[str, Any], str]:
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", "You are a helpful assistant."),
-            MessagesPlaceholder("messages", optional=True),
-        ]
-    )
-    model = ChatOpenAI(model="gpt-4o-mini")
-
-    return prompt | model | StrOutputParser()
 
 
 def app() -> None:
-    load_dotenv(override=True)
-
     st.title("Simple Chatbot")
 
     # 会話履歴を初期化
@@ -49,10 +28,9 @@ def app() -> None:
     messages.append(HumanMessage(content=human_message))
 
     # 応答を生成して表示
-    chain = create_chain()
-    stream = chain.stream({"messages": messages})
+    ai_message = f"{human_message}への応答"
     with st.chat_message("ai"):
-        ai_message = st.write_stream(stream)
+        st.write(ai_message)
 
     # LLMの応答を会話履歴を追加
     messages.append(AIMessage(content=ai_message))
