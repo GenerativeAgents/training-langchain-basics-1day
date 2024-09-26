@@ -88,6 +88,15 @@ OPENAI_API_KEY の値を記入してください。
 > [!NOTE]
 > LANGCHAIN_API_KEY はあとで記入するので、この時点では空のままで大丈夫です。
 
+### .gitignore ファイルの作成
+
+.env ファイルを誤って GitHub に公開したりすることが内容、.gitignore ファイルを作成します。
+以下のコマンドを実行してください。
+
+```console
+echo '.env' >> .gitignore
+```
+
 ### langchain リポジトリの clone
 
 講座の一部で langchain リポジトリのデータを読み込んで使います。
