@@ -94,7 +94,7 @@ OPENAI_API_KEY の値を記入してください。
 以下のコマンドを実行してください。
 
 ```console
-echo '.env' >> .gitignore
+echo '.env' >> .gitignore && echo 'tmp/' >> .gitignore
 ```
 
 ### langchain リポジトリの clone
